@@ -8,7 +8,7 @@ using namespace std;
 
 class Menu {
   public:
-    string menu_title = "";
+    string title = "";
     vector<string> items = {};
     vector<string> option_text = {};
     vector<function<void()>> callbacks = {};

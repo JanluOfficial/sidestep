@@ -7,7 +7,7 @@ using namespace std;
 #define TITLE_POS screenHeight / 2 - 100
 
 Menu::Menu(string title) {
-  menu_title = title;
+  title = title;
 }
 
 void Menu::addItem(string item, function<void()> callback) {
@@ -37,7 +37,7 @@ void Menu::executeSelected() {
 
 void DrawMenu(Menu menu) {
   int screenHeight = GetScreenHeight();
-  DrawText(menu.menu_title.c_str(), 150, TITLE_POS, 40, GREEN);
+  DrawText(menu.title.c_str(), 150, TITLE_POS, 40, GREEN);
 
   for (int i = 0; i < (int)menu.items.size(); i++) {
     int posX = 150, posY = TITLE_POS + 100 + (50 * i);

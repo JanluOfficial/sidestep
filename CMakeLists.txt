@@ -9,6 +9,7 @@ set(SOURCES
     main.cpp 
     map.cpp 
     menu.cpp
+    sound_resource.cpp
 )
 
 # --- Build Options ---

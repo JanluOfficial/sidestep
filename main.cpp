@@ -516,5 +516,3 @@ int main() {
     CloseWindow();
     return 0;
 }
-
-// emcc -o C:\xampp\htdocs\game\index.html main.cpp -Wall -std=c++14 -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result -Os -I. -I C:/raylib/raylib/src -I C:/raylib/raylib/src/external -L. -L C:/raylib/raylib/src -s USE_GLFW=3 -s ASYNCIFY -s INITIAL_MEMORY=67108864 -s TOTAL_MEMORY=67108864 -s FORCE_FILESYSTEM=1 --preload-file resources/ --shell-file C:/raylib/raylib/src/shell.html C:/raylib/raylib/src/web/libraylib.a -DPLATFORM_WEB -s 'EXPORTED_FUNCTIONS=["_free","_malloc","_main"]' -s EXPORTED_RUNTIME_METHODS=ccall

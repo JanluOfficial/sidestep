@@ -89,9 +89,6 @@ int main() {
     initUserAR(displayWidth, displayHeight);
     int aspectRatioCount = (int)sizeof(aspectRatios) / (int)sizeof(aspectRatios[0]);
     
-    //int commonWidths[] = {1280, 1366, 1440, 1600, 1920, 2560, 3440, 3840, 5120, 7680};
-    //int commonWidthCount = (int)sizeof(commonWidths) / (int)sizeof(commonWidths[0]);
-    
     int resolutions[aspectRatioCount * commonWidthCount][2];
     int resCount[5] = {0, 0, 0, 0, 0};
     for (int ar = 0; ar < aspectRatioCount; ar++) {

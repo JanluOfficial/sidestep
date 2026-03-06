@@ -49,22 +49,20 @@ int targetFPS = 1;
 const char* fpsText;
 const char* aspectRatioText;
 
-// Sound
+void PlaySoundResource(Sound sound);
+void StopSoundResource(Sound sound);
+
+#ifndef PLATFORM_WEB
 void PlaySoundResource(Sound sound) {
-    #ifdef PLATFORM_WEB
-    return;
-    #endif
     PlaySound(sound);
     return;
 }
 
 void StopSoundResource(Sound sound) {
-    #ifdef PLATFORM_WEB
-    return;
-    #endif
     StopSound(sound);
     return;
 }
+#endif
 
 Player player;
 ProceduralMap proceduralMap;

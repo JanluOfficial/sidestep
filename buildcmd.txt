@@ -1,0 +1,7 @@
+Webassembly: emcc -o game.html main.cpp map.cpp menu.cpp  -Os -Wall C:/raylib/raylib/src/web/libraylib.a -I. -IC:/raylib/raylib/src/external -L. -LC:/raylib/raylib/src/web/ -s USE_GLFW=3 --shell-file path-to/shell.html -DPLATFORM_WEB
+
+Windows: g++ -o sidestep.exe main.cpp map.cpp menu.cpp -O1 -Wall -std=c++14 -Wno-missing-braces -I ./ -L ./ -lraylib -lopengl32 -lgdi32 -lwinmm -static
+(Add -mwindows to hide the command prompt window)
+
+Linux: g++ -o sidestep main.cpp map.cpp menu.cpp -lraylib
+

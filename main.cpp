@@ -11,6 +11,7 @@ using namespace std;
 #include "menu.h"
 #include "player.h"
 #include "graphics.h"
+#include "sound_resource.h"
 
 #define TITLE_Y screenHeight / 2 - 100
 
@@ -48,21 +49,6 @@ void setScreen(int s) {
 int targetFPS = 1;
 const char* fpsText;
 const char* aspectRatioText;
-
-void PlaySoundResource(Sound sound);
-void StopSoundResource(Sound sound);
-
-#ifndef PLATFORM_WEB
-void PlaySoundResource(Sound sound) {
-    PlaySound(sound);
-    return;
-}
-
-void StopSoundResource(Sound sound) {
-    StopSound(sound);
-    return;
-}
-#endif
 
 Player player;
 ProceduralMap proceduralMap;

@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "sound_resource.h"
 #include <cstring>
 #include <vector>
 #include <raylib.h>
@@ -10,9 +11,10 @@ Menu::Menu(string title) {
   title = title;
 }
 
-void Menu::addItem(string item, function<void()> callback) {
+void Menu::addItem(string item, function<void()> callback, Sound sound) {
   items.push_back(item);
   callbacks.push_back(callback);
+  sounds.push_back(sound);
 }
 
 void Menu::update_option_text(int index, string text) {
@@ -32,6 +34,9 @@ void Menu::incrementSelected() {
 void Menu::executeSelected() {
   if (selected >= 0 && selected < (int)callbacks.size() && callbacks[selected] != nullptr) {
     callbacks[selected]();
+    if (selected < (int)sounds.size()) {
+      PlaySoundResource(sounds[selected]);
+    }
   }
 }
 

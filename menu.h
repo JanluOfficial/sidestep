@@ -1,6 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <raylib.h>
 #include <string>
 #include <vector>
 #include <functional>
@@ -12,11 +13,12 @@ class Menu {
     vector<string> items = {};
     vector<string> option_text = {};
     vector<function<void()>> callbacks = {};
+    vector<Sound> sounds = {};
     Menu(string title);
     int selected = 0;
 
-    void addItem(string item, function<void()> callback = nullptr);
-    void update_option_text(int index, string text);    
+    void addItem(string item, function<void()> callback = nullptr, Sound sound = LoadSound("resources/sounds/menu_select.ogg"));
+    void update_option_text(int index, string text);
     void incrementSelected();
     void executeSelected();
 };

@@ -9,6 +9,7 @@ set(SOURCES
     main.cpp 
     map.cpp 
     menu.cpp
+    #graphics.cpp
     sound_resource.cpp
 )
 

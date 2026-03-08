@@ -318,13 +318,10 @@ int main() {
                     if (player.x > 0 && proceduralMap.map[1][player.x - 1] == 1) {
                         // Calculate how far left we can go
                         for (ix = player.x - 1; ix >= 0; ix--) {
-                            if (proceduralMap.map[1][ix] == 1) {
-                                player.x = ix;
-                                player.score += 10;
-                                moved++;
-                            } else {
-                                break;
-                            }
+                            if (proceduralMap.map[1][ix] != 1) break;
+                            player.x = ix;
+                            player.score += 10;
+                            moved++;
                         }
                     }
                 }
@@ -334,13 +331,10 @@ int main() {
                     if (player.x < 6 && proceduralMap.map[1][player.x + 1] == 1) {
                         // Calculate how far right we can go
                         for (ix = player.x + 1; ix <= 6; ix++) {
-                            if (proceduralMap.map[1][ix] == 1) {
-                                player.x = ix;
-                                player.score += 10;
-                                moved--;
-                            } else {
-                                break;
-                            }
+                            if (proceduralMap.map[1][ix] != 1) break;
+                            player.x = ix;
+                            player.score += 10;
+                            moved--;
                         }
                     }
                 }

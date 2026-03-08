@@ -17,7 +17,7 @@ class Menu {
     Menu(string title);
     int selected = 0;
 
-    void addItem(string item, function<void()> callback = nullptr, Sound sound = LoadSound("resources/sounds/menu_select.ogg"));
+    void addItem(string item, function<void()> callback = nullptr, Sound sound = LoadSound("resources/sounds/menu_confirm.ogg"));
     void update_option_text(int index, string text);
     void incrementSelected();
     void executeSelected();

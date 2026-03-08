@@ -6,7 +6,6 @@
 using namespace std;
 
 int framerates[] = {30, 60, 120, 240, 9999};
-
 int commonWidths[] = {1280, 1366, 1440, 1600, 1920, 2560, 3440, 3840, 5120, 7680};
 int commonWidthCount = (int)sizeof(commonWidths) / (int)sizeof(commonWidths[0]);
 
@@ -30,9 +29,9 @@ int gcd(int a, int b) {
 }
 
 void initUserAR(int screenWidth, int screenHeight) {
-    int g = gcd(screenWidth, screenHeight);
-    aspectRatios[0][0] = screenWidth / g;
-    aspectRatios[0][1] = screenHeight / g;
+  int g = gcd(screenWidth, screenHeight);
+  aspectRatios[0][0] = screenWidth / g;
+  aspectRatios[0][1] = screenHeight / g; 
 }
 
 #endif // GRAPHICS_H

@@ -160,11 +160,9 @@ int main() {
         proceduralMap = ProceduralMap();
         old_score = 0;
         setScreen(SCREEN_GAME);
-        PlaySoundResource(menuConfirmSound);
     });
     mainMenu.addItem("Options", [&]() {
         setScreen(SCREEN_OPTIONS);
-        PlaySoundResource(menuConfirmSound);
     });
     #ifndef PLATFORM_WEB
     mainMenu.addItem("Exit", [&]() {
@@ -175,26 +173,21 @@ int main() {
     Menu optionsMenu("Options");
     optionsMenu.addItem("Debug Overlay", [&]() {
         debug = !debug;
-        PlaySoundResource(menuConfirmSound);
     });
     optionsMenu.addItem("Graphics", [&]() {
         setScreen(SCREEN_GRAPHICS);
-        PlaySoundResource(menuConfirmSound);
     });
     optionsMenu.addItem("Keybinds", [&]() {
         setScreen(SCREEN_KEYBINDS);
-        PlaySoundResource(menuConfirmSound);
     });
     optionsMenu.addItem("Back", [&]() {
         setScreen(SCREEN_MAIN);
-        PlaySoundResource(menuBackSound);
     });
 
     Menu graphicsMenu("Graphics Options");
     #ifndef PLATFORM_WEB
     graphicsMenu.addItem("Fullscreen", [&]() {
         ToggleFullscreen();
-        PlaySoundResource(menuConfirmSound);
     });
     #endif
     graphicsMenu.addItem("Aspect Ratio", [&]() {
@@ -208,7 +201,6 @@ int main() {
             tileSize = screenHeight / 12;
             sideMargin = (screenWidth - 7 * tileSize) / 2;
         }
-        PlaySoundResource(menuTickSound);
     });
     graphicsMenu.addItem("Resolution", [&]() {
         // Change Resolution in the current aspect ratio;
@@ -223,16 +215,13 @@ int main() {
             sideMargin = (screenWidth - 7 * tileSize) / 2;
         }
 
-        PlaySoundResource(menuTickSound);
-    });
+    }, menuTickSound);
     graphicsMenu.addItem("Framerate", [&]() {
         targetFPS = (targetFPS + 1) % (sizeof(framerates) / sizeof(framerates[0]));
         SetTargetFPS(framerates[targetFPS]);
-        PlaySoundResource(menuTickSound);
-    });
+    }, menuTickSound);
     graphicsMenu.addItem("Back", [&]() {
         setScreen(SCREEN_OPTIONS);
-        PlaySoundResource(menuBackSound);
     });
 
     int keybind_index = 0;

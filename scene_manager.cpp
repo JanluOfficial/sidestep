@@ -7,12 +7,12 @@ void SceneManager::ChangeScene(unique_ptr<BaseScene> newScene) {
   if (currentScene) currentScene->Teardown();
   currentScene = std::move(newScene);
   currentScene->Setup();
-}
+};
 
 void SceneManager::Update() {
   if (currentScene) currentScene->Update();
-}
+};
 
 void SceneManager::Draw() {
   if (currentScene) currentScene->Draw();
-}
+};

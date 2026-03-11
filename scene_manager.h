@@ -13,6 +13,6 @@ public:
   void ChangeScene(std::unique_ptr<BaseScene> newScene);
   void Update();
   void Draw();
-}
+};
 
 #endif // SCENE_MANAGER_H

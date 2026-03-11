@@ -12,6 +12,6 @@ public:
   virtual void Update() = 0;      // Game Logic, runs repeatedly
   virtual void Draw() = 0;        // Draw Logic, runs repeatedly
   virtual void Teardown() = 0;    // Runs when scene gets destroyed (switching to another one for example)
-}
+};
 
 #endif // SCENE_H

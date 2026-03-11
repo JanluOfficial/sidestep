@@ -11,6 +11,7 @@ set(SOURCES
     menu.cpp
     #graphics.cpp
     sound_resource.cpp
+    scene_manager.cpp
 )
 
 # --- Build Options ---

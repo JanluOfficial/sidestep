@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(sidestep VERSION 1.0 LANGUAGES CXX)
 
+find_package(raylib CONFIG REQUIRED)
+
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -36,7 +38,8 @@ elseif(WIN32)
     
     # Standard Windows libraries 
     target_link_libraries(sidestep PRIVATE 
-        raylib 
+        raylib
+	glfw3
         opengl32 
         gdi32 
         winmm

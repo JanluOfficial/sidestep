@@ -17,7 +17,7 @@ int main() {
     sceneman.Update();
 
     BeginDrawing();
-      ClearBackground(BLACK);
+      ClearBackground(sceneman.bg_color);
       sceneman.Draw();
 
       if (debug) {

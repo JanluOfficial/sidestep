@@ -10,7 +10,7 @@ void SceneManager::ChangeScene(unique_ptr<BaseScene> newScene) {
 };
 
 void SceneManager::Update() {
-  if (currentScene) currentScene->Update();
+  if (currentScene) currentScene->Update(this);
 };
 
 void SceneManager::Draw() {

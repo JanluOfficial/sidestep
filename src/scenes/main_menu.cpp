@@ -2,7 +2,7 @@
 #include <raylib.h>
 
 void MainMenu::Setup() {
-  logo = LoadTexture("resource/textures/game_logo.png");
+  logo = LoadTexture("resources/textures/game_logo.png");
 }
 
 void MainMenu::Update(SceneManager *manager) {
@@ -10,7 +10,7 @@ void MainMenu::Update(SceneManager *manager) {
 }
 
 void MainMenu::Draw() {
-  return;
+  DrawTexture(logo, 50, 50, WHITE);
 }
 
 void MainMenu::Teardown() {

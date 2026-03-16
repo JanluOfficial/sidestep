@@ -25,7 +25,7 @@ void LogoScene::Update(SceneManager* manager) {
     jinglePlayed = true;
   }
 
-  if (timer > 3.0f && !IsSoundPlaying(jingle)) {
+  if (timer > 3.0f && !IsSoundPlaying(jingle) || IsKeyPressed(KEY_SPACE)) {
     manager->ChangeScene(std::make_unique<MainMenu>());
     //DrawText("WILL SWITCH TO MAIN HERE", 50, 50, 20, WHITE);
   }

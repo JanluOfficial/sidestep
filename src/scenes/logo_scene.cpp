@@ -1,5 +1,6 @@
 #include "scene_manager.h"
 #include "scenes/logo_scene.h"
+#include "scenes/main_menu.h"
 #include <raylib.h>
 #include <cmath>
 
@@ -25,8 +26,8 @@ void LogoScene::Update(SceneManager* manager) {
   }
 
   if (timer > 3.0f && !IsSoundPlaying(jingle)) {
-    //manager->ChangeScene(std::make_unique<MainMenuScene>());
-    DrawText("WILL SWITCH TO MAIN HERE", 50, 50, 20, WHITE);
+    manager->ChangeScene(std::make_unique<MainMenu>());
+    //DrawText("WILL SWITCH TO MAIN HERE", 50, 50, 20, WHITE);
   }
 }
 

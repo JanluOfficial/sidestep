@@ -1,6 +1,8 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+class SceneManager;
+
 class BaseScene {
 public:
   // virtual voids
@@ -8,10 +10,10 @@ public:
   // derived versions (like from MenuScene, GameScene etc)
   virtual ~BaseScene() {}         // Needed for proper cleanup I guess
 
-  virtual void Setup() = 0;       // Runs once before everything else
-  virtual void Update() = 0;      // Game Logic, runs repeatedly
-  virtual void Draw() = 0;        // Draw Logic, runs repeatedly
-  virtual void Teardown() = 0;    // Runs when scene gets destroyed (switching to another one for example)
+  virtual void Setup() = 0;                             // Runs once before everything else
+  virtual void Update(SceneManager* manager) = 0;       // Game Logic, runs repeatedly
+  virtual void Draw() = 0;                              // Draw Logic, runs repeatedly
+  virtual void Teardown() = 0;                          // Runs when scene gets destroyed (switching to another one for example)
 };
 
 #endif // SCENE_H

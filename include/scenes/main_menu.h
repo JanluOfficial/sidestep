@@ -9,7 +9,15 @@ class MainMenu : public BaseScene {
     float timer = 0.0f;
     Texture2D logo;
 
+    const int menu_item_count = 3;
+
+    // Color primary;
+
+    int selected = 0;
+
   public:
+    Color primary;
+
     void Setup() override;
     void Update(SceneManager *manager) override;
     void Draw() override;

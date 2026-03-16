@@ -24,9 +24,10 @@ void LogoScene::Update(SceneManager* manager) {
     jinglePlayed = true;
   }
 
-  /*if (timer > 3.0f && !IsSoundPlaying(jingle)) {
-    manager->ChangeScene(std::make_unique<MainMenuScene>());
-  }*/
+  if (timer > 3.0f && !IsSoundPlaying(jingle)) {
+    //manager->ChangeScene(std::make_unique<MainMenuScene>());
+    DrawText("SWITCH TO MAIN WILL TRIGGER HERE", 50, 50, 20, WHITE);
+  }
 }
 
 void LogoScene::Draw() {

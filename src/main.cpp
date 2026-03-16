@@ -7,6 +7,7 @@ bool debug = true;
 
 int main() {
   InitWindow(1280, 720, "Sidestep");
+  InitAudioDevice();
   SetTargetFPS(60);
 
   SceneManager sceneman;
@@ -25,6 +26,7 @@ int main() {
     EndDrawing();
   }
 
+  CloseAudioDevice();
   CloseWindow();
   return 0;
 }

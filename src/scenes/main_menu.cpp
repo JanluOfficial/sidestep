@@ -12,8 +12,6 @@ void MainMenu::Update(SceneManager *manager) {
 
   if (IsKeyPressed(KEY_G)) selected = (selected + 1) % menu_item_count;
 
-  if (IsKeyPressed(KEY_A)) manager->SetColors(PINK, PURPLE, BLUE, WHITE); 
-
   primary = manager->primary_color;
 }
 

@@ -4,7 +4,7 @@
 #include <raylib.h>
 #include <cmath>
 
-void LogoScene::Setup() {
+void LogoScene::Setup(SceneManager *manager) {
   logos[0] = LoadTexture("resources/textures/jpix0.png");
   logos[1] = LoadTexture("resources/textures/jpix1.png");
   logos[2] = LoadTexture("resources/textures/jpix2.png");

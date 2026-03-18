@@ -18,7 +18,7 @@ class MainMenu : public BaseScene {
   public:
     Color primary;
 
-    void Setup() override;
+    void Setup(SceneManager *manager) override;
     void Update(SceneManager *manager) override;
     void Draw() override;
     void Teardown() override;

@@ -3,8 +3,10 @@
 #include <raylib.h>
 
 // Default functions
-void MainMenu::Setup() {
+void MainMenu::Setup(SceneManager *manager) {
   logo = LoadTexture("resources/textures/game_logo.png");
+  manager->PlayBackgroundMusic("resources/music/sidestep_menu_1.ogg");
+  manager->SetMusicVolume(1.0f);
 }
 
 void MainMenu::Update(SceneManager *manager) {

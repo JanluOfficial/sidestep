@@ -9,10 +9,13 @@ using namespace std;
 void SceneManager::ChangeScene(unique_ptr<BaseScene> newScene) {
   if (currentScene) currentScene->Teardown();
   currentScene = std::move(newScene);
-  currentScene->Setup();
+  currentScene->Setup(this);
 };
 
 void SceneManager::Update() {
+  if (is_music_playing) {
+    UpdateMusicStream(current_music);
+  }
   if (currentScene) currentScene->Update(this);
 };
 

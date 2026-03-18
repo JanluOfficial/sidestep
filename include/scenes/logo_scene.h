@@ -14,7 +14,7 @@ class LogoScene : public BaseScene {
     bool jinglePlayed = false;
 
   public:
-    void Setup() override;
+    void Setup(SceneManager *manager) override;
     void Update(SceneManager *manager) override;
     void Draw() override;
     void Teardown() override;

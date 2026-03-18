@@ -5,6 +5,8 @@
 // Default functions
 void MainMenu::Setup(SceneManager *manager) {
   logo = LoadTexture("resources/textures/game_logo.png");
+  play_btn = LoadTexture("resources/ui/play.png");
+  gear_btn = LoadTexture("resources/ui/gear.png");
   manager->PlayBackgroundMusic("resources/music/sidestep_menu_1.ogg");
   manager->SetMusicVolume(1.0f);
 }
@@ -15,6 +17,7 @@ void MainMenu::Update(SceneManager *manager) {
   if (IsKeyPressed(KEY_G)) selected = (selected + 1) % menu_item_count;
 
   primary = manager->primary_color;
+  bg = manager->bg_color;
 }
 
 void MainMenu::Draw() {
@@ -25,15 +28,19 @@ void MainMenu::Draw() {
   DrawTexture(logo, screenWidth / 2 - logoWidth / 2, screenHeight / 3 - logoHeight / 2, WHITE);
 
   for (int i = 0; i < menu_item_count; i++) {
-    Rectangle border = {
-      (float)centerX + 160 * (i - 1) - 75,
-      (float)centerY - 50,
-      150, 150
-    };
+    float x = (float)centerX + 160 * (i - 1) - 75;
+    float y = (float)centerY - 50;
+
+    Rectangle border = {x, y, 150, 150};
+    if (i == selected) DrawRectangleRec(border, primary);
     DrawRectangleLinesEx(border, 3, primary);
+
+    DrawTexture((i == 0 ? play_btn : gear_btn), x, y, (i == selected ? bg : primary));
   }
 }
 
 void MainMenu::Teardown() {
   UnloadTexture(logo);
+  UnloadTexture(play_btn);
+  UnloadTexture(gear_btn);
 }

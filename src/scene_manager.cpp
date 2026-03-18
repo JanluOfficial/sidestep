@@ -1,6 +1,7 @@
 #include "scene_manager.h"
 #include "base_scene.h"
 #include <memory>
+#include <string>
 #include <raylib.h>
 using namespace std;
 
@@ -40,7 +41,7 @@ void SceneManager::StopMusic() {
 
 void SceneManager::SetMusicVolume(float volume) {
   if (is_music_playing) {
-    SetMusicVolume(current_music, volume);
+    ::SetMusicVolume(current_music, volume);
   }
 }
 

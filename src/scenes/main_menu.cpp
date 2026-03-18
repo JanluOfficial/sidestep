@@ -20,12 +20,17 @@ void MainMenu::Update(SceneManager *manager) {
 void MainMenu::Draw() {
   int screenWidth = GetScreenWidth(), screenHeight = GetScreenHeight();
   int centerX = screenWidth / 2, centerY = screenHeight / 2;
-  
+
   int logoWidth = logo.width, logoHeight = logo.height;
   DrawTexture(logo, screenWidth / 2 - logoWidth / 2, screenHeight / 3 - logoHeight / 2, WHITE);
 
   for (int i = 0; i < menu_item_count; i++) {
-    DrawRectangleLines(centerX - 150, centerY - 25 + i * 50, 300, 50, primary);
+    Rectangle border = {
+      (float)centerX + 160 * (i - 1) - 75,
+      (float)centerY - 50,
+      150, 150
+    };
+    DrawRectangleLinesEx(border, 3, primary);
   }
 }
 

@@ -21,25 +21,25 @@ void SceneManager::Draw() {
 
 // Music System Implementation
 void SceneManager::PlayBackgroundMusic(const std::string& fileName) {
-  if (isMusicPlaying) {
+  if (is_music_playing) {
     StopMusic();
   }
 
   currentMusic = LoadMusicStream(fileName.c_str());
   PlayMusicStream(currentMusic);
-  isMusicPlaying = true;
+  is_music_playing = true;
 }
 
 void SceneManager::StopMusic() {
-  if (isMusicPlaying) {
+  if (is_music_playing) {
     StopMusicStream(currentMusic);
     UnloadMusicStream(currentMusic);
-    isMusicPlaying = false;
+    is_music_playing = false;
   }
 }
 
 void SceneManager::SetMusicVolume(float volume) {
-  if (isMusicPlaying) {
+  if (is_music_playing) {
     SetMusicVolume(currentMusic, volume);
   }
 }
@@ -55,7 +55,7 @@ void SceneManager::SetColors(Color primary, Color secondary, Color teritary, Col
 // Cleanup (unloads the assets because we
 // can't have memory leaks in the big 26)
 SceneManager::~SceneManager() {
-    if (isMusicPlaying) {
+    if (is_music_playing) {
         UnloadMusicStream(currentMusic);
     }
 }

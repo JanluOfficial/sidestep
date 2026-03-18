@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <raylib.h>
+#include <string>
 
 class BaseScene;
 

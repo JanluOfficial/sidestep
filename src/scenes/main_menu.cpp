@@ -25,7 +25,7 @@ void MainMenu::Draw() {
   DrawTexture(logo, screenWidth / 2 - logoWidth / 2, screenHeight / 3 - logoHeight / 2, WHITE);
 
   for (int i = 0; i < menu_item_count; i++) {
-    DrawRectangle(centerX - 75, centerY - 25 + i * 75, 150, 50, primary);
+    DrawRectangleLines(centerX - 150, centerY - 25 + i * 50, 300, 50, primary);
   }
 }
 

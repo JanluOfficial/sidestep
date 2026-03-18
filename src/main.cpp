@@ -7,8 +7,9 @@ bool debug = true;
 
 int main() {
   InitWindow(1280, 720, "Sidestep");
+  SetAudioStreamBufferSizeDefault(4096);
   InitAudioDevice();
-  SetTargetFPS(60);
+  SetTargetFPS(120);
 
   SceneManager sceneman;
   sceneman.ChangeScene(std::make_unique<LogoScene>());

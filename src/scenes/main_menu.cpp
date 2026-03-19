@@ -1,6 +1,7 @@
 #include "scene_manager.h"
 #include "scenes/main_menu.h"
 #include <raylib.h>
+#include <string>
 
 // Default functions
 void MainMenu::Setup(SceneManager *manager) {
@@ -57,6 +58,21 @@ void MainMenu::Draw() {
     if (i == selected) DrawRectangleRec(border, primary);
     else DrawRectangleLinesEx(border, 3, primary);
 
+    std::string text;
+    switch (selected) {
+      case 0:
+        text = "Play";
+        break;
+      case 1:
+        text = "Options";
+        break;
+      case 2:
+        text = "Exit";
+        break;
+      default: break;
+    }
+
+    if (i == selected) DrawText(text.c_str(), x, y + 160, 30, primary);
 
     DrawTexture((i == 0 ? play_btn : gear_btn), x, y, (i == selected ? bg : primary));
   }

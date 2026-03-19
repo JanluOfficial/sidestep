@@ -55,7 +55,8 @@ void MainMenu::Draw() {
 
     Rectangle border = {x, y, 150, 150};
     if (i == selected) DrawRectangleRec(border, primary);
-    DrawRectangleLinesEx(border, 3, primary);
+    else DrawRectangleLinesEx(border, 3, primary);
+
 
     DrawTexture((i == 0 ? play_btn : gear_btn), x, y, (i == selected ? bg : primary));
   }

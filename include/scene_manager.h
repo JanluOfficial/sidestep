@@ -14,6 +14,7 @@ class SceneManager {
     std::unique_ptr<BaseScene> currentScene;
     Music current_music;
     bool is_music_playing = false;
+    bool requesting_close = false;
 
   public:
     Color primary_color     = GREEN;
@@ -37,6 +38,10 @@ class SceneManager {
 
     // Cleanup
     ~SceneManager();
+
+    // Close logic
+    bool RequestingClose();
+    void RequestClose();
 };
 
 #endif // SCENE_MANAGER_H

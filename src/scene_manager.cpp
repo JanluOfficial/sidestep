@@ -67,3 +67,7 @@ SceneManager::~SceneManager() {
     UnloadMusicStream(current_music);
   }
 }
+
+// Close stuff
+bool SceneManager::RequestingClose() { return requesting_close; }
+void SceneManager::RequestClose() { requesting_close = true; }

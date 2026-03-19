@@ -15,6 +15,22 @@ void MainMenu::Update(SceneManager *manager) {
   timer += GetFrameTime();
 
   if (IsKeyPressed(KEY_G)) selected = (selected + 1) % menu_item_count;
+  if (IsKeyPressed(KEY_H)) {
+    switch (selected) {
+      case 0:
+        // Transition to GameScene
+        break;
+      case 1:
+        // Transition to SettingsScene
+        break;
+      case 2:
+        // Exit
+        manager->RequestClose();
+        break;
+      default:
+        break;
+    }
+  }
 
   primary = manager->primary_color;
   bg = manager->bg_color;

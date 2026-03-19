@@ -14,7 +14,7 @@ int main() {
   SceneManager sceneman;
   sceneman.ChangeScene(std::make_unique<LogoScene>());
 
-  while (!WindowShouldClose()) {
+  while (!WindowShouldClose() && !sceneman.RequestingClose()) {
     sceneman.Update();
 
     BeginDrawing();
@@ -27,6 +27,7 @@ int main() {
     EndDrawing();
   }
 
+  sceneman.Teardown();
   CloseAudioDevice();
   CloseWindow();
   return 0;

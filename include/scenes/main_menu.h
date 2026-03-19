@@ -12,6 +12,8 @@ class MainMenu : public BaseScene {
     Texture2D play_btn;
     Texture2D gear_btn;
 
+    Sound menu_tick;
+
     const int menu_item_count = 3;
 
     int selected = 0;

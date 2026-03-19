@@ -5,8 +5,11 @@
 // Default functions
 void MainMenu::Setup(SceneManager *manager) {
   logo = LoadTexture("resources/textures/game_logo.png");
+
   play_btn = LoadTexture("resources/ui/play.png");
   gear_btn = LoadTexture("resources/ui/gear.png");
+  menu_tick = LoadSound("resources/sounds/menu_select.ogg");
+
   manager->PlayBackgroundMusic("resources/music/sidestep_menu_1.ogg");
   manager->SetMusicVolume(1.0f);
 }
@@ -14,7 +17,10 @@ void MainMenu::Setup(SceneManager *manager) {
 void MainMenu::Update(SceneManager *manager) {
   timer += GetFrameTime();
 
-  if (IsKeyPressed(KEY_G)) selected = (selected + 1) % menu_item_count;
+  if (IsKeyPressed(KEY_G)) {
+    selected = (selected + 1) % menu_item_count;
+    PlaySound(menu_tick);
+  }
   if (IsKeyPressed(KEY_H)) {
     switch (selected) {
       case 0:
@@ -59,4 +65,6 @@ void MainMenu::Teardown() {
   UnloadTexture(logo);
   UnloadTexture(play_btn);
   UnloadTexture(gear_btn);
+
+  UnloadSound(menu_tick);
 }

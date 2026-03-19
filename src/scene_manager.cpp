@@ -23,6 +23,10 @@ void SceneManager::Draw() {
   if (currentScene) currentScene->Draw();
 };
 
+void SceneManager::Teardown() {
+  if (currentScene) currentScene->Teardown();
+}
+
 // Music System Implementation
 void SceneManager::PlayBackgroundMusic(const std::string& fileName) {
   if (is_music_playing) {

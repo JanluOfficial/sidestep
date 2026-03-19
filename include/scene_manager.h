@@ -25,6 +25,7 @@ class SceneManager {
     void ChangeScene(std::unique_ptr<BaseScene> newScene);
     void Update();
     void Draw();
+    void Teardown();
 
     // Music System
     void PlayBackgroundMusic(const std::string& fileName);

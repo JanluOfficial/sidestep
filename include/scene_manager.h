@@ -11,6 +11,7 @@ class BaseScene;
 
 class SceneManager {
   private:
+    std::unique_ptr<BaseScene> nextScene;
     std::unique_ptr<BaseScene> currentScene;
     Music current_music;
     bool is_music_playing = false;

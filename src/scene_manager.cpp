@@ -7,15 +7,18 @@ using namespace std;
 
 // Core
 void SceneManager::ChangeScene(unique_ptr<BaseScene> newScene) {
-  if (currentScene) currentScene->Teardown();
-  currentScene = std::move(newScene);
-  currentScene->Setup(this);
+  nextScene = std::move(newScene);
 };
 
 void SceneManager::Update() {
-  if (is_music_playing) {
-    UpdateMusicStream(current_music);
+  if (is_music_playing) UpdateMusicStream(current_music);
+
+  if (nextScene) {
+    if (currentScene) currentScene->Teardown();
+    currentScene = std::move(nextScene);
+    currentScene->Setup(this);
   }
+
   if (currentScene) currentScene->Update(this);
 };
 

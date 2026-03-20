@@ -30,6 +30,7 @@ class SceneManager {
 
     // Music System
     void PlayBackgroundMusic(const std::string& fileName);
+    bool IsMusicPlaying();
     void StopMusic();
     void SetMusicVolume(float volume);
 

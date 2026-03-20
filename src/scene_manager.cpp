@@ -38,6 +38,10 @@ void SceneManager::PlayBackgroundMusic(const std::string& fileName) {
   is_music_playing = true;
 }
 
+bool SceneManager::IsMusicPlaying() {
+  return is_music_playing;
+}
+
 void SceneManager::StopMusic() {
   if (is_music_playing) {
     StopMusicStream(current_music);

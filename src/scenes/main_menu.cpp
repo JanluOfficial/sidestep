@@ -1,7 +1,9 @@
 #include "scene_manager.h"
 #include "scenes/main_menu.h"
+#include "scenes/game_scene.h"
 #include <raylib.h>
 #include <string>
+#include <memory>
 
 // Default functions
 void MainMenu::Setup(SceneManager *manager) {
@@ -27,7 +29,7 @@ void MainMenu::Update(SceneManager *manager) {
   if (IsKeyPressed(KEY_H)) {
     switch (selected) {
       case 0:
-        // Transition to GameScene
+        manager->ChangeScene(std::make_unique<GameScene>());
         break;
       case 1:
         // Transition to SettingsScene

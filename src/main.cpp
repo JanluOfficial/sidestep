@@ -15,6 +15,7 @@ int main() {
   sceneman.ChangeScene(std::make_unique<LogoScene>());
 
   while (!WindowShouldClose() && !sceneman.RequestingClose()) {
+    if (IsKeyPressed(KEY_F3)) debug = !debug;
     sceneman.Update();
 
     BeginDrawing();
@@ -23,6 +24,7 @@ int main() {
 
       if (debug) {
         DrawText("DEBUG OVERLAY", 10, 10, 20, RED);
+        DrawText(TextFormat("FPS: %d", GetFPS()), 10, 30, 20, RED);
       }
     EndDrawing();
   }

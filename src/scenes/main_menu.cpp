@@ -11,7 +11,9 @@ void MainMenu::Setup(SceneManager *manager) {
   gear_btn = LoadTexture("resources/ui/gear.png");
   menu_tick = LoadSound("resources/sounds/menu_select.ogg");
 
-  manager->PlayBackgroundMusic("resources/music/sidestep_menu_1.ogg");
+  if (!manager->IsMusicPlaying()) {
+    manager->PlayBackgroundMusic("resources/music/sidestep_menu_1.ogg");
+  }
   manager->SetMusicVolume(1.0f);
 }
 

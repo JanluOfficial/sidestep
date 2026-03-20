@@ -70,6 +70,7 @@ void GameScene::Draw() {
       DrawRectangle(x * 30, y * 30, 30, 30, (map.map[y][x] != 0 ? primary : bg));
     }
   }
+  DrawRectangle(player.x * 30 + 5, 35, 20, 20, RED);
 }
 
 void GameScene::Teardown() {

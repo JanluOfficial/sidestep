@@ -38,6 +38,7 @@ void GameScene::Update(SceneManager *manager) {
 
   if (map.map[1][player.x] == 0) {
     manager->ChangeScene(std::make_unique<MainMenu>());
+    return;
   }
 
   if (old_score % 1000000 > player.score % 1000000) {
@@ -67,7 +68,8 @@ void GameScene::Draw() {
   DrawText("Implement game scene draw soon", 50, 50, 20, primary);
   for (int x = 0; x <= 6; x++) {
     for (int y = 0; y < 12; y++) {
-      DrawRectangle(x * 30, y * 30, 30, 30, (map.map[y][x] != 0 ? primary : bg));
+      if (map.map[y][x] == 0) continue;
+      DrawRectangle(x * 30, y * 30, 30, 30, primary);
     }
   }
   DrawRectangle(player.x * 30 + 5, 35, 20, 20, RED);

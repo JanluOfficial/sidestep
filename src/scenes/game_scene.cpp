@@ -65,14 +65,19 @@ void GameScene::Update(SceneManager *manager) {
 }
 
 void GameScene::Draw() {
-  DrawText("Implement game scene draw soon", 50, 50, 20, primary);
+  int sw = GetScreenWidth(), sh = GetScreenHeight();
+  int cx = sw / 2, cy = sh / 2;
+  //bool horizontal = (sh > sw);
+
+  int rectSize = sh / 12;
+
   for (int x = 0; x <= 6; x++) {
     for (int y = 0; y < 12; y++) {
       if (map.map[y][x] == 0) continue;
-      DrawRectangle(x * 30, y * 30, 30, 30, primary);
+      DrawRectangle((x - 3) * rectSize + cx - rectSize/2, y * rectSize, rectSize, rectSize, primary);
     }
   }
-  DrawRectangle(player.x * 30 + 5, 35, 20, 20, RED);
+  DrawRectangle((player.x - 3) * rectSize + rectSize/6 + cx - rectSize/2, rectSize+rectSize/6, rectSize-rectSize/3, rectSize-rectSize/3, bg);
 }
 
 void GameScene::Teardown() {

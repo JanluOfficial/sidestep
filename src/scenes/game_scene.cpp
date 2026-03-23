@@ -77,7 +77,7 @@ void GameScene::Draw() {
       DrawRectangle((x - 3) * rectSize + cx - rectSize/2, dy * rectSize, rectSize, rectSize, primary);
     }
   }
-  DrawRectangle((player.x - 3) * rectSize + rectSize/6 + cx - rectSize/2, sh - 2*rectSize+rectSize/6, rectSize-rectSize/3, rectSize-rectSize/3, bg);
+  DrawRectangle((player.x-3) * rectSize + rectSize/6 + cx - rectSize/2, sh - 2*rectSize+rectSize/6, rectSize-rectSize/3, rectSize-rectSize/3, bg);
 }
 
 void GameScene::Teardown() {

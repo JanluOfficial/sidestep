@@ -67,17 +67,17 @@ void GameScene::Update(SceneManager *manager) {
 void GameScene::Draw() {
   int sw = GetScreenWidth(), sh = GetScreenHeight();
   int cx = sw / 2, cy = sh / 2;
-  //bool horizontal = (sh > sw);
 
   int rectSize = sh / 12;
 
   for (int x = 0; x <= 6; x++) {
     for (int y = 0; y < 12; y++) {
+      int dy = 11 - y;
       if (map.map[y][x] == 0) continue;
-      DrawRectangle((x - 3) * rectSize + cx - rectSize/2, y * rectSize, rectSize, rectSize, primary);
+      DrawRectangle((x - 3) * rectSize + cx - rectSize/2, dy * rectSize, rectSize, rectSize, primary);
     }
   }
-  DrawRectangle((player.x - 3) * rectSize + rectSize/6 + cx - rectSize/2, rectSize+rectSize/6, rectSize-rectSize/3, rectSize-rectSize/3, bg);
+  DrawRectangle((player.x - 3) * rectSize + rectSize/6 + cx - rectSize/2, sh - 2*rectSize+rectSize/6, rectSize-rectSize/3, rectSize-rectSize/3, bg);
 }
 
 void GameScene::Teardown() {

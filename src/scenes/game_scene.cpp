@@ -91,6 +91,14 @@ void GameScene::Draw() {
     }
   }
   DrawRectangle((player.x-3) * rectSize + rectSize/6 + cx - rectSize/2, sh - 2*rectSize+rectSize/6, rectSize-rectSize/3, rectSize-rectSize/3, bg);
+
+  // UI
+  DrawText("Score", 20, 20, 20, primary);
+  DrawText(TextFormat("%d", player.score), 20, 40, 40, primary);
+
+  for (int i = 0; i < player.rempen; i++) {
+    DrawRectangle(20 + 60 * i, 100, 50, 20, primary);
+  }
 }
 
 void GameScene::Teardown() {

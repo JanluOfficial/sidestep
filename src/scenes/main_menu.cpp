@@ -1,3 +1,4 @@
+#include "input.h"
 #include "scene_manager.h"
 #include "scenes/main_menu.h"
 #include "scenes/game_scene.h"
@@ -22,11 +23,11 @@ void MainMenu::Setup(SceneManager *manager) {
 void MainMenu::Update(SceneManager *manager) {
   timer += GetFrameTime();
 
-  if (IsKeyPressed(KEY_G)) {
+  if (IsInputLeftPressed()) {
     selected = (selected + 1) % menu_item_count;
     PlaySound(menu_tick);
   }
-  if (IsKeyPressed(KEY_H)) {
+  if (IsInputRightPressed()) {
     switch (selected) {
       case 0:
         manager->ChangeScene(std::make_unique<GameScene>());

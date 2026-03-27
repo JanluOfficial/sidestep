@@ -11,10 +11,15 @@ private:
   float timer = 0.0f;
   float tick_timer = 0.0f;
 
+  bool paused = false;
+
   Sound milestone1k;
   Sound milestone10k;
   Sound milestone100k;
   Sound milestone1m;
+
+  Sound move;
+  Sound dmg;
 
   ProceduralMap map;
   Player player;
@@ -22,7 +27,10 @@ private:
   int moved;
   int old_score;
 
-  const float game_speed = 5;
+  bool l_buffered;
+  bool r_buffered;
+
+  const float game_speed = 4.5;
 
 public:
   Color primary;

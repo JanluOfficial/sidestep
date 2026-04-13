@@ -12,6 +12,8 @@ private:
   float tick_timer = 0.0f;
 
   bool paused = false;
+  bool dead = false;
+  float death_timer;
 
   Sound milestone1k;
   Sound milestone10k;

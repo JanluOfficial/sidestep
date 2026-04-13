@@ -3,6 +3,7 @@
 #include "scenes/main_menu.h"
 #include "player.h"
 #include "map.h"
+#include "input.h"
 #include <raylib.h>
 #include <string>
 
@@ -25,9 +26,11 @@ void GameScene::Setup(SceneManager *manager) {
   dmg = LoadSound("resources/sounds/fail.ogg");
 }
 
-void GameScene::Update(SceneManager *manager) {
-  if (!paused){
-    if (IsKeyPressed(KEY_G)) {
+void GameScene::Update(SceneManager *manager) { 
+  float frame_time = GetFrameTime();
+  
+  if (!paused && !dead){
+    if (IsInputLeftPressed() || l_buffered && tick_timer < 0.1) {
       if (player.x > 0 && map.map[1][player.x - 1] != 0) {
         for (int ix = player.x - 1; ix >= 0; ix--) {
           if (map.map[1][ix] == 0) break;
@@ -40,7 +43,7 @@ void GameScene::Update(SceneManager *manager) {
       }
     }
 
-    if (IsKeyPressed(KEY_H) || l_buffered && tick_timer < 0.1) {
+    if (IsInputRightPressed() || r_buffered && tick_timer < 0.1) {
       if (player.x < 6 && map.map[1][player.x + 1] != 0) {
         for (int ix = player.x + 1; ix <= 6; ix++) {
           if (map.map[1][ix] == 0) break;
@@ -54,7 +57,9 @@ void GameScene::Update(SceneManager *manager) {
     }
 
     if (map.map[1][player.x] == 0 || player.rempen == 0) {
-      manager->ChangeScene(std::make_unique<MainMenu>());
+      //manager->ChangeScene(std::make_unique<MainMenu>());
+      dead = true;
+      death_timer = 0;
       return;
     }
 
@@ -74,9 +79,8 @@ void GameScene::Update(SceneManager *manager) {
       PlaySound(milestone1k);
     }
 
-    float frame_time = GetFrameTime();
     timer += frame_time;
-    tick_timer += GetFrameTime();
+    tick_timer += frame_time;
     if (player.rempen_cooldown > 0) {
       player.rempen_cooldown -= frame_time;
     }
@@ -87,11 +91,23 @@ void GameScene::Update(SceneManager *manager) {
     paused = !paused;
   }
 
+  if (dead) {
+    if (manager->IsMusicPlaying()) {
+      manager->StopMusic();
+    }
+    death_timer += frame_time;
+    if (death_timer > 3.0f) {
+      manager->ChangeScene(std::make_unique<MainMenu>());
+      return;
+    }
+  }
+
   primary = manager->primary_color;
   bg = manager->bg_color;
 }
 
 void GameScene::Draw() {
+  Color tint_bg = ColorAlpha(bg, 0.5);
   int sw = GetScreenWidth(), sh = GetScreenHeight();
   int cx = sw / 2, cy = sh / 2;
 
@@ -105,7 +121,12 @@ void GameScene::Draw() {
       DrawRectangle((x - 3) * rectSize + cx - rectSize/2, dy * rectSize, rectSize, rectSize, primary);
     }
   }
-  DrawRectangle((player.x-3) * rectSize + rectSize/6 + cx - rectSize/2, sh - 2*rectSize+rectSize/6, rectSize-rectSize/3, rectSize-rectSize/3, bg);
+  DrawRectangle(
+    (player.x-3) * rectSize + rectSize/6 + cx - rectSize/2,
+    sh - 2*rectSize+rectSize/6,
+    rectSize-rectSize/3,
+    rectSize-rectSize/3, bg
+  );
 
   // UI
   DrawText("Score", 20, 20, 20, primary);
@@ -117,12 +138,15 @@ void GameScene::Draw() {
 
   // Paused
   if (paused) {
-    Color pause_bg = {0, 0, 0, 204};
-    DrawRectangle(0, 0, sw, sh, pause_bg);
+    DrawRectangle(0, 0, sw, sh, tint_bg);
     DrawText("PAUSED", cx - 100, cy - 20, 40, primary);
   }
 
-  //if (L_BUFFERABLE) DrawRectangle(20, 140, 50, 50, RED);
+  // Dead
+  if (dead) {
+    DrawRectangle(0, 0, sw, sh, tint_bg);
+    DrawText("Game Over", cx - 100, cy - 20, 40, primary);
+  }
 }
 
 void GameScene::Teardown() {

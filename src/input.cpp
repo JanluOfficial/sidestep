@@ -7,10 +7,10 @@ KeyboardKey keyboard_right = KEY_H;
 GamepadButton gamepad_left = GAMEPAD_BUTTON_LEFT_TRIGGER_1;
 GamepadButton gamepad_right = GAMEPAD_BUTTON_RIGHT_TRIGGER_1;
 
-bool IsInputLeftPressed() {
-  return IsKeyPressed(keyboard_left) || IsGamepadButtonPressed(0, gamepad_left);
+bool IsActionPressed(KeyboardKey key, GamepadButton button) {
+  bool gp = IsGamepadAvailable(0) && IsGamepadButtonPressed(0, button);
+  return gp || IsKeyPressed(key);
 }
 
-bool IsInputRightPressed() {
-  return IsKeyPressed(keyboard_right) || IsGamepadButtonPressed(0, gamepad_right);
-}
+bool IsInputLeftPressed() { return IsActionPressed(keyboard_left, gamepad_left); }
+bool IsInputRightPressed() { return IsActionPressed(keyboard_right, gamepad_right); }

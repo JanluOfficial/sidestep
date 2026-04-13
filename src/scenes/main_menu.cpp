@@ -2,6 +2,7 @@
 #include "scene_manager.h"
 #include "scenes/main_menu.h"
 #include "scenes/game_scene.h"
+#include "scenes/settings_scene.h"
 #include <raylib.h>
 #include <string>
 #include <memory>
@@ -33,7 +34,7 @@ void MainMenu::Update(SceneManager *manager) {
         manager->ChangeScene(std::make_unique<GameScene>());
         break;
       case 1:
-        // Transition to SettingsScene
+        manager->ChangeScene(std::make_unique<SettingsScene>());
         break;
       case 2:
         // Exit

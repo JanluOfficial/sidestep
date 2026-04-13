@@ -3,8 +3,6 @@
 #include "scenes/logo_scene.h"
 #include <memory>
 
-bool debug = true;
-
 int main() {
   InitWindow(1280, 720, "Sidestep");
   SetAudioStreamBufferSizeDefault(4096);
@@ -15,14 +13,14 @@ int main() {
   sceneman.ChangeScene(std::make_unique<LogoScene>());
 
   while (!WindowShouldClose() && !sceneman.RequestingClose()) {
-    if (IsKeyPressed(KEY_F3)) debug = !debug;
+    if (IsKeyPressed(KEY_F3)) sceneman.SetDebug(!sceneman.DebugEnabled());
     sceneman.Update();
 
     BeginDrawing();
       ClearBackground(sceneman.bg_color);
       sceneman.Draw();
 
-      if (debug) {
+      if (sceneman.DebugEnabled()) {
         DrawText("DEBUG OVERLAY", 10, 10, 20, RED);
         DrawText(TextFormat("FPS: %d", GetFPS()), 10, 30, 20, RED);
       }

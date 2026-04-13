@@ -17,6 +17,8 @@ class SceneManager {
     bool is_music_playing = false;
     bool requesting_close = false;
 
+    bool debug_mode = false;
+
   public:
     Color primary_color     = GREEN;
     Color secondary_color   = LIME;
@@ -37,6 +39,10 @@ class SceneManager {
 
     // Color customization
     void SetColors(Color primary, Color secondary, Color teritary, Color bg);
+
+    // Debug stuff
+    bool DebugEnabled();
+    void SetDebug(bool enabled);
 
     // Cleanup
     ~SceneManager();

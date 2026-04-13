@@ -67,6 +67,15 @@ void SceneManager::SetColors(Color primary, Color secondary, Color teritary, Col
   bg_color          = bg;
 }
 
+// Debug stuff
+bool SceneManager::DebugEnabled() {
+  return debug_mode;
+}
+
+void SceneManager::SetDebug(bool enabled) {
+  debug_mode = enabled;
+}
+
 // Cleanup (unloads the assets because we
 // can't have memory leaks in the big 26)
 SceneManager::~SceneManager() {

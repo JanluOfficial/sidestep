@@ -3,6 +3,7 @@
 #include "scenes/settings_scene.h"
 #include "scenes/main_menu.h"
 #include <raylib.h>
+#include <cstring>
 #include <memory>
 
 void SettingsScene::NavigateForward() {
@@ -52,10 +53,27 @@ void SettingsScene::Update(SceneManager *manager) {
   if (IsInputRightPressed()) {
     NavigateForward();
   }
+
+  primary = manager->primary_color;
+  bg = manager->bg_color;
 }
 
 void SettingsScene::Draw() {
-  DrawRectangle(10 * selected, 10, 10, 10, RED);
+    ClearBackground(bg);
+    int startPosX = 100;
+    int startPosY = 100;
+    int fontSize = 20;
+    int spacing = 40;
+
+    for (int i = 0; i < (int)current_menu->size(); i++) {
+        const char* label = (*current_menu)[i].label.c_str();
+
+        if (i == selected) {
+            DrawText(">", startPosX - 20, startPosY + (i * spacing), fontSize, primary);
+        }
+
+        DrawText(label, startPosX, startPosY + (i * spacing), fontSize, primary);
+    }
 }
 
 void SettingsScene::Teardown() {

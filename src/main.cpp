@@ -23,7 +23,8 @@ int main() {
 
       if (sceneman.DebugEnabled()) {
         DrawText("DEBUG OVERLAY", 10, 10, 20, RED);
-        DrawText(TextFormat("FPS: %d", GetFPS()), 10, 30, 20, RED);
+        DrawText(TextFormat("[FPS]: %d", GetFPS()), 10, 30, 20, RED);
+        DrawText(TextFormat("[Touch] X: %d, Y: %d, TP: %d", GetTouchX(), GetTouchY(), GetTouchPointCount()), 10, 50, 20, RED);
       }
     EndDrawing();
   }

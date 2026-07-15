@@ -1,11 +1,12 @@
 #include "raylib.h"
 #include "scene_manager.h"
 #include "scenes/logo_scene.h"
+#include "config.h"
 #include <memory>
 
 int main() {
-  InitWindow(1280, 720, "Sidestep");
-  SetAudioStreamBufferSizeDefault(4096);
+  InitWindow(game_width_default, game_height_default, "Sidestep");
+  SetAudioStreamBufferSizeDefault(audio_stream_buffer_size);
   InitAudioDevice();
   SetTargetFPS(120);
 
